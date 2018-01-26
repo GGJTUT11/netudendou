@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Weathenium_0
+  - Weathenium
+  - Ice
   layers:
   - Default
   - TransparentFX
