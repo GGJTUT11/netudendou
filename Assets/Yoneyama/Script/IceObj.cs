@@ -11,7 +11,7 @@ public class IceObj : MonoSingleton<IceObj>
     {
         if (dendouritu == 1.0f)
         {
-            HP -= 1;
+            HP -= 1f;
         }
         if (HP < 0)
         {
