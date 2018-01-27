@@ -146,7 +146,7 @@ public class PlayerMove : MonoBehaviour {
     void IceBreak()
     {
 
-        Ray ray = new Ray(transform.position, new Vector3(1, 0, 0));
+        Ray ray = new Ray(new Vector3(transform.position.x,0,transform.position.z), new Vector3(1, 0, 0));
 
         RaycastHit hit;
 
