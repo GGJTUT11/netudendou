@@ -6,7 +6,7 @@ public class ningenMove : MonoSingleton<ningenMove>
 {
 
     public float speed = 1f;
-    private float speed_ = 0;
+    [HideInInspector] public float speed_ = 0;
     private float timer = 0;
     private float initTime = 0;
     private bool makeMove = false;
