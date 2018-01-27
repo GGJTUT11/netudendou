@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMove : MonoBehaviour {
+	private enum colorFlag
+	{
+		blue = 0,
+		yellow = 1,
+		red = 2
+	}
+	[SerializeField] private Renderer renderer;
+	private int bodyColor;
 
     [SerializeField] private float speed = 5f;
     [SerializeField] private float jump = 5f;
@@ -94,6 +102,7 @@ public class PlayerMove : MonoBehaviour {
             syozi = false;
             respon_OK = false;
         }
+		StartCoroutine(changeBodyColor());
     }
 
 
@@ -131,6 +140,7 @@ public class PlayerMove : MonoBehaviour {
                 syozi = true;
                 Destroy(other.gameObject);
                 StartCoroutine(waitrespon());
+				StartCoroutine(changeBodyColor());
             }
 
         }
@@ -159,6 +169,50 @@ public class PlayerMove : MonoBehaviour {
         }
     }
 
+	private IEnumerator changeBodyColor()
+	{
+		float changeTimer = 0f;
+		if (netudendou == 0.0f) {
+			bodyColor = (int)colorFlag.blue;
+		} else if (netudendou == 0.5f) {
+			bodyColor = (int)colorFlag.yellow;
+		} else {
+			bodyColor = (int)colorFlag.red;
+		}
 
+		switch (bodyColor) 
+		{
+		case (int)colorFlag.blue:
+			while (true) {
+				yield return new WaitForEndOfFrame ();
+				if (renderer.material.color	== Color.blue) {
+					break;
+				}
+				changeTimer += Time.deltaTime;
+				renderer.material.color	= Color.Lerp (renderer.material.color, Color.blue, changeTimer);
+			}
+			break;
+		case (int)colorFlag.yellow:
+			while (true) {
+				yield return new WaitForEndOfFrame ();
+				if (renderer.material.color	== Color.yellow) {
+					break;
+				}
+				changeTimer += Time.deltaTime;
+				renderer.material.color	= Color.Lerp (renderer.material.color, Color.yellow, changeTimer);
+			}
+			break;
+		case (int)colorFlag.red:
+			while (true) {
+				yield return new WaitForEndOfFrame ();
+				if (renderer.material.color	== Color.red) {
+					break;
+				}
+				changeTimer += Time.deltaTime;
+				renderer.material.color	= Color.Lerp (renderer.material.color, Color.red, changeTimer);
+			}
+			break;
+		}
+	}
 
 }
