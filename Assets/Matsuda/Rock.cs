@@ -15,7 +15,7 @@ public class Rock : MonoBehaviour
 	}
     void Update()
     {
-        if (GameObject.Find("RockSwitch") == true)
+        if (GameObject.Find("RockSwitch").GetComponent<RockSwitch>().GetTouchRockSwitch() == true)
         {
             rb.position += new Vector3(1, 0, 0) * speed * Time.deltaTime;
         }

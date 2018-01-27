@@ -20,10 +20,13 @@ public class Bear : MonoBehaviour
     void Update()
     {
         CharacterController controller = GetComponent<CharacterController>();
-        moveDirection = new Vector3(x, 0, 0);
-        moveDirection = transform.TransformDirection(moveDirection);
-        moveDirection *= speed;
-        controller.Move(moveDirection * Time.deltaTime);
+        if (GameObject.Find("BearSwitch").GetComponent<BearSwitch>().GetTouchBearSwitch() == true)
+        {
+            moveDirection = new Vector3(x, 0, 0);
+            moveDirection = transform.TransformDirection(moveDirection);
+            moveDirection *= speed;
+            controller.Move(moveDirection * Time.deltaTime);
+        }
     }
     public void OnTriggerEnter(Collider other)
     {
