@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EvaporateWater : MonoBehaviour {
+namespace Miyada
+{
+    public class EvaporateWater : MonoBehaviour {
 
     [SerializeField]
     private float lifeTime = 5.0f;
@@ -15,10 +17,10 @@ public class EvaporateWater : MonoBehaviour {
 
     private bool willDestroy = false;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         evaporateAmount = (transform.localScale.y - MinScaleY) / lifeTime * Time.deltaTime;
-	}
+    }
 
     public void Evaporate()
     {
@@ -51,4 +53,6 @@ public class EvaporateWater : MonoBehaviour {
         Destroy(smokeEffect.gameObject, 2f);
         Destroy(gameObject);
     }
+}
+
 }
