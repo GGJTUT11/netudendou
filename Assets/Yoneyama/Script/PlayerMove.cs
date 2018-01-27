@@ -74,7 +74,7 @@ public class PlayerMove : MonoBehaviour {
     {
         Objhakidasi();
         move_input();
-        IceBreak();
+ //       IceBreak();
 
     }
 
@@ -160,24 +160,24 @@ public class PlayerMove : MonoBehaviour {
     }
 
 
-    void IceBreak()
-    {
+    //void IceBreak()
+    //{
 
-        Ray ray = new Ray(new Vector3(transform.position.x,0,transform.position.z), new Vector3(1, 0, 0));
+    //    Ray ray = new Ray(new Vector3(transform.position.x, transform.position.y, transform.position.z), new Vector3(1, 0, 0));
 
-        RaycastHit hit;
+    //    RaycastHit hit;
 
-        int distance = 2;
+    //    int distance = 2;
 
-        if (Physics.Raycast(ray, out hit, distance))
-        {
-            if (hit.collider.tag == "Ice")
-            {
-                hit.collider.gameObject.GetComponent<IceObj>().Tokeru(netudendou);
-            }
+    //    if (Physics.Raycast(ray, out hit, distance))
+    //    {
+    //        if (hit.collider.tag == "Ice")
+    //        {
+    //            hit.collider.gameObject.GetComponent<IceObj>().Tokeru(netudendou);
+    //        }
 
-        }
-    }
+    //    }
+    //}
 
     void OnTriggerEnter(Collider other)
     {
