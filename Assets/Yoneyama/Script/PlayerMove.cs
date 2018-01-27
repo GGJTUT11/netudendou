@@ -123,7 +123,7 @@ public class PlayerMove : MonoBehaviour {
             respon_OK = false;
         }
 
-        if (netudendou == 0.5f)
+        else if (netudendou == 0.5f)
         {
             Instantiate(netudendou_50_Obj, transform.position, transform.rotation);
             netudendou = netudendou_syoki;
@@ -131,7 +131,7 @@ public class PlayerMove : MonoBehaviour {
             respon_OK = false;
         }
 
-        if (netudendou == 1.0f)
+        else if (netudendou == 1.0f)
         {
             Instantiate(netudendou_100_Obj, transform.position, transform.rotation);
             netudendou = netudendou_syoki;
@@ -204,6 +204,9 @@ public class PlayerMove : MonoBehaviour {
         }
     }
 
+	/// <summary>
+	/// テンプリンの色が変わる処理
+	/// </summary>
 	private IEnumerator changeBodyColor()
 	{
 		float changeTimer = 0f;
