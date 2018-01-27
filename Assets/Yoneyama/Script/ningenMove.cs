@@ -17,7 +17,7 @@ public class ningenMove : MonoSingleton<ningenMove>
     void Update()
     {
 
-        rb.velocity = new Vector3(speed, 0f, 0f);
+        rb.velocity = new Vector3(speed, rb.velocity.y , 0f);
 
     }
 

@@ -66,6 +66,7 @@ public class PlayerMove : MonoBehaviour {
     {
         Objhakidasi();
         move_input();
+        IceBreak();
     }
 
     private void FixedUpdate()
@@ -142,6 +143,25 @@ public class PlayerMove : MonoBehaviour {
     }
 
 
+    void IceBreak()
+    {
+
+        Ray ray = new Ray(transform.position, new Vector3(1, 0, 0));
+
+        RaycastHit hit;
+
+        int distance = 2;
+
+        if (Physics.Raycast(ray, out hit, distance))
+        {
+            if (hit.collider.tag == "Ice")
+            {
+                hit.collider.gameObject.GetComponent<IceObj>().Tokeru(netudendou);
+            }
+
+        }
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (other.transform.tag == "Switch_IceGround" && netudendou == 0)
@@ -194,15 +214,16 @@ public class PlayerMove : MonoBehaviour {
     }
 
 
-    void OnCollisionStay(Collision collision)
-    {
+
+    //void OnCollisionStay(Collision collision)
+    //{
        
-        //今は触れ続けるために移動し続けなければいけない→どうにかしたい→レイで判定
-        if (collision.transform.tag == "Ice")
-        {
-            collision.gameObject.GetComponent<IceObj>().Tokeru(netudendou);
-        }
-    }
+    //    //今は触れ続けるために移動し続けなければいけない→どうにかしたい→レイで判定
+    //    if (collision.transform.tag == "Ice")
+    //    {
+    //        collision.gameObject.GetComponent<IceObj>().Tokeru(netudendou);
+    //    }
+    //}
 
 	private IEnumerator changeBodyColor()
 	{
