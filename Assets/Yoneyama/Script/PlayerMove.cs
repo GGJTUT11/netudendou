@@ -24,11 +24,21 @@ public class PlayerMove : MonoBehaviour {
     [SerializeField] private float ningen_idou_nomale = 1;
     [SerializeField] private float ningen_idou_hayai = 2;
 
+    private Vector3 windPower;
+
     public float Netudendou_Property
     {
         get
         {
             return netudendou;
+        }
+    }
+
+    public Vector3 WindPower
+    {
+        set
+        {
+            windPower = value;
         }
     }
 
@@ -45,8 +55,30 @@ public class PlayerMove : MonoBehaviour {
 	
 	void Update ()
     {
-        move();
         Objhakidasi();
+        move_input();
+    }
+
+    private void FixedUpdate()
+    {
+        move();
+    }
+
+    private float move_x = 0;
+    private float move_y = 0;
+
+    void move_input()
+    {
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        {
+            move_x = Input.GetAxis("Horizontal") * speed *Time.deltaTime;
+        }
+        if (Input.GetKeyDown(KeyCode.W) && isground == true)
+        {
+            move_y = jump;
+            isground = false;
+        }
+
     }
 
     /// <summary>
@@ -54,16 +86,15 @@ public class PlayerMove : MonoBehaviour {
     /// </summary>
     void move()
     {
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        rb.velocity = new Vector3(move_x * speed, rb.velocity.y , 0f) + windPower;
+
+        if(move_y != 0)
         {
-            rb.velocity = new Vector3(Input.GetAxis("Horizontal") * speed, rb.velocity.y, 0f);
+            rb.velocity += Vector3.up * move_y;
+            move_y = 0;
         }
 
-        if (Input.GetKeyDown(KeyCode.W) && isground == true)
-        {
-            rb.velocity = new Vector3(0f, jump, 0f);
-            isground = false;
-        }
+        move_x = 0;
     }
 
     /// <summary>
@@ -71,7 +102,11 @@ public class PlayerMove : MonoBehaviour {
     /// </summary>
     void Objhakidasi()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && syozi == true && netudendou == 0.0f && respon_OK == true)
+        if (!Input.GetKeyDown(KeyCode.Space)) return;
+        if (!syozi) return;
+        if (!respon_OK) return;
+
+        if (netudendou == 0.0f)
         {
             Instantiate(netudendou_0_Obj, transform.position, transform.rotation);
             netudendou = netudendou_syoki;
@@ -79,7 +114,7 @@ public class PlayerMove : MonoBehaviour {
             respon_OK = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && syozi == true && netudendou == 0.5f && respon_OK == true)
+        if (netudendou == 0.5f)
         {
             Instantiate(netudendou_50_Obj, transform.position, transform.rotation);
             netudendou = netudendou_syoki;
@@ -87,7 +122,7 @@ public class PlayerMove : MonoBehaviour {
             respon_OK = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && syozi == true && netudendou == 1.0f && respon_OK == true)
+        if (netudendou == 1.0f)
         {
             Instantiate(netudendou_100_Obj, transform.position, transform.rotation);
             netudendou = netudendou_syoki;
@@ -151,11 +186,10 @@ public class PlayerMove : MonoBehaviour {
     void OnCollisionStay(Collision collision)
     {
        
-        //今は触れ続けるために移動し続けなければいけない→どうにかしたい
+        //今は触れ続けるために移動し続けなければいけない→どうにかしたい→レイで判定
         if (collision.transform.tag == "Ice")
         {
-
-            IceObj.Instance.Tokeru(netudendou);
+            collision.gameObject.GetComponent<IceObj>().Tokeru(netudendou);
         }
     }
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IceObj : MonoSingleton<IceObj>
+public class IceObj : MonoBehaviour
 {
 
     [SerializeField] private float HP = 10f; 
