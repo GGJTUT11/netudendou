@@ -285,6 +285,16 @@ Prefab:
       propertyPath: m_Center.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 65538995491530936, guid: 4474aff9c32736a4cb8485ea8e5eeaf7,
+        type: 2}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 65538995491530936, guid: 4474aff9c32736a4cb8485ea8e5eeaf7,
+        type: 2}
+      propertyPath: m_Center.z
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4474aff9c32736a4cb8485ea8e5eeaf7, type: 2}
   m_IsPrefabParent: 0
@@ -1991,7 +2001,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4510933956204696, guid: 1713d013002d013468573ad8fc03fb53, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -6.06
+      value: -6.38
       objectReference: {fileID: 0}
     - target: {fileID: 4510933956204696, guid: 1713d013002d013468573ad8fc03fb53, type: 2}
       propertyPath: m_LocalPosition.y
@@ -2031,7 +2041,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4510933956204696, guid: 1713d013002d013468573ad8fc03fb53, type: 2}
       propertyPath: m_LocalScale.x
-      value: 4
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 4510933956204696, guid: 1713d013002d013468573ad8fc03fb53, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -2346,7 +2356,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4556527208694330, guid: 4af54e271499ca744a3cbe959e2ac817, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0.528
       objectReference: {fileID: 0}
     - target: {fileID: 4556527208694330, guid: 4af54e271499ca744a3cbe959e2ac817, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2382,6 +2392,11 @@ Prefab:
       propertyPath: speed
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 65312488267461778, guid: 4af54e271499ca744a3cbe959e2ac817,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4af54e271499ca744a3cbe959e2ac817, type: 2}
   m_IsPrefabParent: 0
@@ -2390,6 +2405,19 @@ GameObject:
   m_PrefabParentObject: {fileID: 1980711268286536, guid: 4af54e271499ca744a3cbe959e2ac817,
     type: 2}
   m_PrefabInternal: {fileID: 1631351517}
+--- !u!136 &1633481910
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1633481905}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &1815335309 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1060267825180128, guid: 7457cc1f771c3a7438b90f9a8be3ac6d,
