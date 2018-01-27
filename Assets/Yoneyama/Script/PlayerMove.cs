@@ -32,12 +32,6 @@ public class PlayerMove : MonoBehaviour {
         }
     }
 
-
-    public void ningen_idouryou(float netudendou)
-    {
-       
-    }
-
     IEnumerator waitrespon()
     {
         yield return new WaitForSeconds(0.5f);
@@ -156,9 +150,11 @@ public class PlayerMove : MonoBehaviour {
 
     void OnCollisionStay(Collision collision)
     {
+       
         //今は触れ続けるために移動し続けなければいけない→どうにかしたい
         if (collision.transform.tag == "Ice")
         {
+
             IceObj.Instance.Tokeru(netudendou);
         }
     }
