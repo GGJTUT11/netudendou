@@ -4,19 +4,18 @@ using UnityEngine;
 
 namespace Miyada
 {
+    /// <summary>
+    /// WindZoneの気流を切り替える.
+    /// </summary>
     public class WindZoneSwitcher : MonoBehaviour
     {
-
-        // Use this for initialization
-        void Start()
+        void OnTriggerEnter(Collider col)
         {
+            var player = col.GetComponent<PlayerMove>();
+            if (!player) return;
 
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
+            const float hot = 1.0f;
+            const float cold = 0.0f;
         }
     }   
 }
