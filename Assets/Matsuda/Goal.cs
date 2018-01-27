@@ -13,7 +13,7 @@ public class Goal : MonoBehaviour
     {
 		
 	}
-    public void OnCollisionEnter(Collision other)
+    public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "ningen")
         {

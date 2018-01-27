@@ -9,7 +9,8 @@ public class PlayerMove : MonoBehaviour {
 		yellow = 1,
 		red = 2
 	}
-	private Renderer renderer;
+
+	[SerializeField] private Renderer renderer;
 	private int bodyColor;
 
     [SerializeField] private float speed = 5f;
@@ -23,6 +24,7 @@ public class PlayerMove : MonoBehaviour {
     [SerializeField] private float netudendou = 0.5f;
     private bool syozi = false;
     private bool respon_OK = false;
+    private bool move_OK = true;
 
     [SerializeField] private GameObject netudendou_0_Obj;
     [SerializeField] private GameObject netudendou_50_Obj;
@@ -56,9 +58,15 @@ public class PlayerMove : MonoBehaviour {
         respon_OK = true;
     }
 
+    IEnumerator waitmove()
+    {
+        yield return new WaitForSeconds(0.5f);
+        move_OK = true;
+    }
+
     void Start ()
     {
-		renderer = this.gameObject.transform.Find ("Cube").GetComponent<Renderer>();
+//		renderer = this.gameObject.transform.Find ("Cube").GetComponent<Renderer>();
         rb = GetComponent<Rigidbody>();
 	}
 	
@@ -67,6 +75,7 @@ public class PlayerMove : MonoBehaviour {
         Objhakidasi();
         move_input();
         IceBreak();
+
     }
 
     private void FixedUpdate()
@@ -79,15 +88,23 @@ public class PlayerMove : MonoBehaviour {
 
     void move_input()
     {
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        if (!move_OK) return;
+        else
         {
-            move_x = Input.GetAxis("Horizontal") * speed *Time.deltaTime;
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+            {
+                move_x = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+                Anim_change_Player.Instance.walk_change();
+            }
+
+            if (Input.GetKeyDown(KeyCode.W) && isground == true)
+            {
+                move_y = jump;
+                isground = false;
+            }
         }
-        if (Input.GetKeyDown(KeyCode.W) && isground == true)
-        {
-            move_y = jump;
-            isground = false;
-        }
+
+        if (Mathf.Abs(move_x) < 0.1) Anim_change_Player.Instance.idol_change(); ;
 
     }
 
@@ -116,30 +133,30 @@ public class PlayerMove : MonoBehaviour {
         if (!syozi) return;
         if (!respon_OK) return;
 
+        Anim_change_Player.Instance.kyusyu_change();
+
         if (netudendou == 0.0f)
         {
             Instantiate(netudendou_0_Obj, transform.position, transform.rotation);
-            netudendou = netudendou_syoki;
-            syozi = false;
-            respon_OK = false;
         }
 
         else if (netudendou == 0.5f)
         {
             Instantiate(netudendou_50_Obj, transform.position, transform.rotation);
-            netudendou = netudendou_syoki;
-            syozi = false;
-            respon_OK = false;
         }
 
         else if (netudendou == 1.0f)
         {
             Instantiate(netudendou_100_Obj, transform.position, transform.rotation);
-            netudendou = netudendou_syoki;
-            syozi = false;
-            respon_OK = false;
         }
-		StartCoroutine(changeBodyColor());
+
+        if (move_OK) move_OK = false;
+        StartCoroutine(waitmove());
+
+        netudendou = netudendou_syoki;
+        syozi = false;
+        respon_OK = false;
+        StartCoroutine(changeBodyColor());
     }
 
 
@@ -192,11 +209,16 @@ public class PlayerMove : MonoBehaviour {
 
             if (Input.GetKeyDown(KeyCode.Space) && syozi == false)
             {
+                Anim_change_Player.Instance.kyusyu_change();
+
+                if (move_OK) move_OK = false;
+                StartCoroutine(waitmove());
+
                 netudendou = other.GetComponent<WeatheniumStatus>().netudendou;
                 syozi = true;
                 Destroy(other.gameObject);
                 StartCoroutine(waitrespon());
-				StartCoroutine(changeBodyColor());
+                StartCoroutine(changeBodyColor());
             }
 
         }

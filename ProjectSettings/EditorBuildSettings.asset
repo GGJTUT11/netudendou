@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Yoneyama/scene/Main_Test.unity
     guid: 974f025b28527b14eafd10168ad24871
   - enabled: 1
+    path: Assets/Yoneyama/scene/arufa.unity
+    guid: be71240ddb4d9cc4bb0221880075fa22
+  - enabled: 0
     path: Assets/Matsuda/Main_Matsuda.unity
     guid: 0550d84a4f94a614c9ded833e6a10df5
   - enabled: 1

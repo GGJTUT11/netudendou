@@ -17,6 +17,7 @@ public class ningenMove : MonoSingleton<ningenMove>
 
     private Vector3 offset_point = new Vector3 (0,0,0);
 
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -91,5 +92,9 @@ public class ningenMove : MonoSingleton<ningenMove>
         offset_point = transform.position;
 
     }
+
+
+
+   
 
 }
