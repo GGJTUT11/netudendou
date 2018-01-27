@@ -6,21 +6,25 @@ public class IceObj : MonoBehaviour
 {
 
     [SerializeField] private float HP = 10f;
-    //[SerializeField] private Vector3 offset_pos = new Vector3(0, 0, 0);
+    private float Ice_tokeru = 0;
+    private float tokeruritu = 0;
 
-    //private void Start()
-    //{
-    //    offset_pos = transform.position;
-    //}
+    private void Start()
+    {
+        Ice_tokeru = HP;
+        tokeruritu = transform.localScale.y / Ice_tokeru;
 
+    }
 
     public void Tokeru(float dendouritu)
     {
+        //Debug.Break();
+
         if (dendouritu == 1.0f)
         {
             HP -= 1f;
-            transform.localScale -= new Vector3(0, transform.localScale.y / 10, 0) ;
-            transform.position = new Vector3(transform.position.x, transform.position.y / 10, transform.position.z);
+            transform.localScale -= new Vector3(0, tokeruritu, 0) ;
+            transform.position = new Vector3(transform.position.x, transform.position.y - tokeruritu, transform.position.z);
 
         }
         if (HP < 0)
