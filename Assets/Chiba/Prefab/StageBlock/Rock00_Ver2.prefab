@@ -21,9 +21,10 @@ GameObject:
   - component: {fileID: 4048346270433854}
   - component: {fileID: 33470673401308456}
   - component: {fileID: 23789360650882288}
+  - component: {fileID: 65325334286228492}
   m_Layer: 0
   m_Name: Rock00_Ver2
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55,7 +56,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: ef31b5a6876dd824185bbf3019e3470c, type: 3}
+  - {fileID: 2100000, guid: b6df9718aa8737b4e86604fe29878535, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -82,3 +83,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1374853694990980}
   m_Mesh: {fileID: 4300000, guid: ef31b5a6876dd824185bbf3019e3470c, type: 3}
+--- !u!65 &65325334286228492
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1374853694990980}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.020224717, y: 0.02019265, z: 0.020146133}
+  m_Center: {x: 0.00004993053, y: -0.000014209651, z: 0.000002608634}
