@@ -9,7 +9,7 @@ public class PlayerMove : MonoBehaviour {
 		yellow = 1,
 		red = 2
 	}
-	[SerializeField] private Renderer renderer;
+	private Renderer renderer;
 	private int bodyColor;
 
     [SerializeField] private float speed = 5f;
@@ -58,6 +58,7 @@ public class PlayerMove : MonoBehaviour {
 
     void Start ()
     {
+		renderer = this.gameObject.transform.Find ("Cube").GetComponent<Renderer>();
         rb = GetComponent<Rigidbody>();
 	}
 	
