@@ -9,7 +9,7 @@ public class PlayerMove : MonoBehaviour {
 		yellow = 1,
 		red = 2
 	}
-	private Renderer renderer;
+	[SerializeField] private Renderer renderer;
 	private int bodyColor;
 
     [SerializeField] private float speed = 5f;
@@ -58,7 +58,7 @@ public class PlayerMove : MonoBehaviour {
 
     void Start ()
     {
-		renderer = this.gameObject.transform.Find ("Cube").GetComponent<Renderer>();
+//		renderer = this.gameObject.transform.Find ("Cube").GetComponent<Renderer>();
         rb = GetComponent<Rigidbody>();
 	}
 	
@@ -82,12 +82,16 @@ public class PlayerMove : MonoBehaviour {
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
             move_x = Input.GetAxis("Horizontal") * speed *Time.deltaTime;
+            Anim_change_Player.Instance.walk_change();
         }
+
         if (Input.GetKeyDown(KeyCode.W) && isground == true)
         {
             move_y = jump;
             isground = false;
         }
+
+        if (Mathf.Abs(move_x) < 0.1) Anim_change_Player.Instance.idol_change(); ;
 
     }
 
@@ -115,6 +119,8 @@ public class PlayerMove : MonoBehaviour {
         if (!Input.GetKeyDown(KeyCode.Space)) return;
         if (!syozi) return;
         if (!respon_OK) return;
+
+        Anim_change_Player.Instance.kyusyu_change();
 
         if (netudendou == 0.0f)
         {
@@ -192,6 +198,7 @@ public class PlayerMove : MonoBehaviour {
 
             if (Input.GetKeyDown(KeyCode.Space) && syozi == false)
             {
+                Anim_change_Player.Instance.kyusyu_change();
                 netudendou = other.GetComponent<WeatheniumStatus>().netudendou;
                 syozi = true;
                 Destroy(other.gameObject);
