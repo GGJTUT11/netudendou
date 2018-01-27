@@ -29,8 +29,6 @@ public class IceBreak : MonoBehaviour {
         {
             if (hit.collider.tag == "Ice")
             {
-
-                Debug.Log(netudendou);
                 hit.collider.gameObject.GetComponent<IceObj>().Tokeru(netudendou);
             }
 

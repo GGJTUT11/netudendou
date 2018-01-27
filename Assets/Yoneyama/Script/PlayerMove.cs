@@ -34,9 +34,12 @@ public class PlayerMove : MonoBehaviour {
     [SerializeField] private float ningen_idou_nomale = 1;
     [SerializeField] private float ningen_idou_hayai = 2;
 
+    private float move_x = 0;
+    private float move_y = 0;
+
     private Vector3 windPower;
 
-    private Vector3 diff = new Vector3(0,0,0);
+    private Vector3 diff = new Vector3(0,0,1f);
 
     public float Netudendou_Property
     {
@@ -76,13 +79,7 @@ public class PlayerMove : MonoBehaviour {
     {
         Objhakidasi();
         move_input();
-
-
-        if (rb.velocity.x > 0) diff.z = 1;
-        if (rb.velocity.x < 0) diff.z = -1;
-
-        transform.rotation = Quaternion.LookRotation(diff);  
-
+        mukihenkou();       
     }
 
     private void FixedUpdate()
@@ -90,8 +87,16 @@ public class PlayerMove : MonoBehaviour {
         move();
     }
 
-    private float move_x = 0;
-    private float move_y = 0;
+
+    void mukihenkou()
+    {
+        if (rb.velocity.x > 0) diff.z = 1;
+        if (rb.velocity.x < 0) diff.z = -1;
+
+        transform.rotation = Quaternion.LookRotation(diff);
+
+    }
+
 
     void move_input()
     {
