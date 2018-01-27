@@ -36,6 +36,8 @@ public class PlayerMove : MonoBehaviour {
 
     private Vector3 windPower;
 
+    private Vector3 diff = new Vector3(0,0,0);
+
     public float Netudendou_Property
     {
         get
@@ -64,17 +66,22 @@ public class PlayerMove : MonoBehaviour {
         move_OK = true;
     }
 
-    void Start ()
+    void Start()
     {
-//		renderer = this.gameObject.transform.Find ("Cube").GetComponent<Renderer>();
+        //		renderer = this.gameObject.transform.Find ("Cube").GetComponent<Renderer>();
         rb = GetComponent<Rigidbody>();
-	}
+    }
 	
 	void Update ()
     {
         Objhakidasi();
         move_input();
- //       IceBreak();
+
+
+        if (rb.velocity.x > 0) diff.z = 1;
+        if (rb.velocity.x < 0) diff.z = -1;
+
+        transform.rotation = Quaternion.LookRotation(diff);  
 
     }
 
@@ -159,25 +166,6 @@ public class PlayerMove : MonoBehaviour {
         StartCoroutine(changeBodyColor());
     }
 
-
-    //void IceBreak()
-    //{
-
-    //    Ray ray = new Ray(new Vector3(transform.position.x, transform.position.y, transform.position.z), new Vector3(1, 0, 0));
-
-    //    RaycastHit hit;
-
-    //    int distance = 2;
-
-    //    if (Physics.Raycast(ray, out hit, distance))
-    //    {
-    //        if (hit.collider.tag == "Ice")
-    //        {
-    //            hit.collider.gameObject.GetComponent<IceObj>().Tokeru(netudendou);
-    //        }
-
-    //    }
-    //}
 
     void OnTriggerEnter(Collider other)
     {
