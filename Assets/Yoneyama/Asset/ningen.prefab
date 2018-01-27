@@ -66,6 +66,7 @@ GameObject:
   - component: {fileID: 4362942519600860}
   - component: {fileID: 65933830859971616}
   - component: {fileID: 114030484627189736}
+  - component: {fileID: 114525073887749724}
   m_Layer: 0
   m_Name: player_netudendou
   m_TagString: ningen
@@ -353,6 +354,7 @@ GameObject:
   - component: {fileID: 4017383990654738}
   - component: {fileID: 95474519520718762}
   - component: {fileID: 114196344321844446}
+  - component: {fileID: 136578949310138982}
   m_Layer: 0
   m_Name: human_Stand
   m_TagString: Untagged
@@ -944,7 +946,6 @@ GameObject:
   - component: {fileID: 54422282445343250}
   - component: {fileID: 114570361967639586}
   - component: {fileID: 136722451174054588}
-  - component: {fileID: 136728426147258518}
   m_Layer: 8
   m_Name: ningen
   m_TagString: ningen
@@ -2113,7 +2114,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1060267825180128}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7fb196809530c5744b5d6d560957c3f2, type: 3}
   m_Name: 
@@ -2129,6 +2130,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78b0b94871f32404ab81582edb5a3761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114525073887749724
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1060267825180128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9019966e1b5da340856e1ffa93767c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderer: {fileID: 137625236925353266}
 --- !u!114 &114570361967639586
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2142,20 +2155,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   speed_: 0
---- !u!136 &136722451174054588
+--- !u!136 &136578949310138982
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1911377776754594}
+  m_GameObject: {fileID: 1410198312114608}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1
+  m_Radius: 0.02
+  m_Height: 0.1
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136728426147258518
+  m_Center: {x: 0, y: 0.05, z: 0}
+--- !u!136 &136722451174054588
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
