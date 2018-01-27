@@ -154,8 +154,7 @@ public class PlayerMove : MonoBehaviour {
         //今は触れ続けるために移動し続けなければいけない→どうにかしたい
         if (collision.transform.tag == "Ice")
         {
-
-            IceObj.Instance.Tokeru(netudendou);
+            collision.gameObject.GetComponent<IceObj>().Tokeru(netudendou);
         }
     }
 
