@@ -11,3 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Yoneyama/scene/Main_Test.unity
     guid: 974f025b28527b14eafd10168ad24871
+  - enabled: 1
+    path: Assets/Matsuda/EndScene.unity
+    guid: f854a85eac3b8b141b4c4abd2840f37a
