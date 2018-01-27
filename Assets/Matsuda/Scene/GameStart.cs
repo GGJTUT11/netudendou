@@ -52,7 +52,7 @@ public class GameStart : MonoBehaviour
         if (maindelta > mainInterval)
         {
             isStart = false;
-            SceneManager.LoadScene("Main_Test");
+            SceneManager.LoadScene("Main_Matsuda");
         }
     }
     //テキストを点滅させるメソッド

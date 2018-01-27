@@ -6,18 +6,22 @@ public class ningenMove : MonoSingleton<ningenMove>
 {
 
     public float speed = 1f;
-    private float speed_ = 0;
+    [HideInInspector] public float speed_ = 0;
     private float timer = 0;
     private float initTime = 0;
     private bool makeMove = false;
+
     Rigidbody rb;
 
     private Vector3 windPower;
+
+    private Vector3 offset_point = new Vector3 (0,0,0);
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         speed_ = speed;
+        offset_point = transform.position;
     }
 
     public void AddWind(Vector3 wind)
@@ -75,6 +79,17 @@ public class ningenMove : MonoSingleton<ningenMove>
             // 通常状態.
             rb.velocity = new Vector3(speed_, rb.velocity.y, 0f);
         }
+
+        if (transform.position == offset_point)
+        {
+            Anim_change.Instance.idol_change();
+        }
+        else
+        {
+            Anim_change.Instance.walk_change();
+        }
+        offset_point = transform.position;
+
     }
 
 }

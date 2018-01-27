@@ -118,7 +118,7 @@ MeshRenderer:
   m_GameObject: {fileID: 1124210586073692}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -193,8 +193,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ff5144812a2647d1ab73257150a5f32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coldWindForce: {x: -5, y: 0, z: 0}
-  hotWindForce: {x: 0, y: 0, z: 0}
+  changeSpeedTime: 1
+  hotWindForce: {x: 0.5, y: 5, z: 0}
 --- !u!114 &114725725325873666
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -207,3 +207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetWindZone: {fileID: 114604289723078164}
+  coldBoxScale: {x: 3, y: 3, z: 1}
+  coldBoxLocalPos: {x: -1, y: 1, z: 0}
+  hotBoxScale: {x: 1, y: 3, z: 1}
+  hotBoxLocalPos: {x: 0, y: 1, z: 0}

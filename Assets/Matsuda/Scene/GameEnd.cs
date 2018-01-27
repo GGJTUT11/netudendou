@@ -20,6 +20,9 @@ public class GameEnd : MonoBehaviour
     GameObject cursor;
 	void Start ()
     {
+        clearorover = DeathBlock.GetIsClear();
+        clearorover = Rock.GetIsClear();
+        clearorover = Goal.GetIsClear();
         gameState = GameState.Result;
         gameClear = transform.Find("GameClear").gameObject;
         gameOver = transform.Find("GameOver").gameObject;
