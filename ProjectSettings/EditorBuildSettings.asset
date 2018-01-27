@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Matsuda/StartScene.unity
+    guid: 87ab0a94eef8f0e43bcd4ff0fd59e3f5
+  - enabled: 1
+    path: Assets/Yoneyama/scene/Main_Test.unity
+    guid: 974f025b28527b14eafd10168ad24871
