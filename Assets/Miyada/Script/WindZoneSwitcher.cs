@@ -9,13 +9,33 @@ namespace Miyada
     /// </summary>
     public class WindZoneSwitcher : MonoBehaviour
     {
+        [SerializeField]
+        private MyWindZone targetWindZone;
+
         void OnTriggerEnter(Collider col)
         {
             var player = col.GetComponent<PlayerMove>();
             if (!player) return;
 
-            const float hot = 1.0f;
-            const float cold = 0.0f;
+            const string PlayerLayerName = "Player";
+            if (player.gameObject.layer != (int)LayerMask.NameToLayer(PlayerLayerName)) return;
+
+            const int HOT = 1;
+            const int COLD = 0;
+
+            // これはひどい
+            // ニュートラルは冷たい扱いなのでこうしますがががが
+            switch((int)player.Netudendou_Property)
+            {
+                case HOT:
+                    targetWindZone.SetState(MyWindZone.WindState.Hot);
+                    break;
+
+                case COLD:
+                default:
+                    targetWindZone.SetState(MyWindZone.WindState.Cold);
+                    break;
+            }
         }
     }   
 }

@@ -12,17 +12,22 @@ namespace Miyada
     public class MyWindZone : MonoBehaviour
     {
         public enum WindState { Cold, Neutral, Hot }
-        private WindState windState;
+        private WindState windState = WindState.Cold; 
 
+        [Header(" ----- Cold ----- ")]
         [SerializeField]
         private Vector3 coldWindForce = Constants.Vector3Zero;
 
+        [Header(" ----- Hot ----- ")]
         [SerializeField]
         private Vector3 hotWindForce = Constants.Vector3Zero;
 
         #region UnityCallback
         void OnTriggerStay(Collider col)
         {
+            const string HumanLayerName = "ningen";
+            if (col.gameObject.layer != (int)LayerMask.NameToLayer(HumanLayerName)) return;
+
             switch (windState)
             {
                 case WindState.Cold:
@@ -53,12 +58,16 @@ namespace Miyada
         {
             var humanRb = col.GetComponent<Rigidbody>();
             humanRb.AddForce(coldWindForce);
+
+            // TODO:あとでエフェクト切り替え追加.
         }
 
         void blowHotWind(Collider col)
         {
             var humanRb = col.GetComponent<Rigidbody>();
             humanRb.AddForce(hotWindForce);
+
+            // TODO:あとでエフェクト切り替え追加.
         }
         #endregion // Private Methods
     }
