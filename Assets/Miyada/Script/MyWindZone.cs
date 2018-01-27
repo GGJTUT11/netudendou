@@ -12,18 +12,20 @@ namespace Miyada
     public class MyWindZone : MonoBehaviour
     {
         public enum WindState { Cold, Neutral, Hot }
-        private WindState windState = WindState.Cold; 
+        private WindState windState = WindState.Cold;
+
+        private ningenMove targetHuman;
 
         [Header(" ----- Cold ----- ")]
         [SerializeField]
-        private Vector3 coldWindForce = Constants.Vector3Zero;
+        private float changeSpeedTime = 1.0f;
 
         [Header(" ----- Hot ----- ")]
         [SerializeField]
         private Vector3 hotWindForce = Constants.Vector3Zero;
 
         #region UnityCallback
-        void OnTriggerStay(Collider col)
+        private void OnTriggerEnter(Collider col)
         {
             const string HumanLayerName = "ningen";
             if (col.gameObject.layer != (int)LayerMask.NameToLayer(HumanLayerName)) return;
@@ -34,7 +36,16 @@ namespace Miyada
                 case WindState.Neutral:
                     blowColdWind(col);
                     break;
+            }
+        }
 
+        void OnTriggerStay(Collider col)
+        {
+            const string HumanLayerName = "ningen";
+            if (col.gameObject.layer != (int)LayerMask.NameToLayer(HumanLayerName)) return;
+
+            switch (windState)
+            {
                 case WindState.Hot:
                     blowHotWind(col);
                     break;
@@ -56,16 +67,28 @@ namespace Miyada
         #region Private Methods
         void blowColdWind(Collider col)
         {
-            var humanRb = col.GetComponent<Rigidbody>();
-            humanRb.AddForce(coldWindForce);
+            var human = col.GetComponent<ningenMove>();
+            if (!human) return;
+            human.MakeStop(changeSpeedTime);
+            targetHuman = human;
 
             // TODO:あとでエフェクト切り替え追加.
         }
 
+        public void StopColdWind()
+        {
+            if (!targetHuman) return;
+            targetHuman.MakeMove(changeSpeedTime);
+            targetHuman = null;
+
+            // TODO:エフェクトの停止.
+        }
+
         void blowHotWind(Collider col)
         {
-            var humanRb = col.GetComponent<Rigidbody>();
-            humanRb.AddForce(hotWindForce);
+            var human = col.GetComponent<ningenMove>();
+            if (!human) return;
+            human.AddWind(hotWindForce);
 
             // TODO:あとでエフェクト切り替え追加.
         }

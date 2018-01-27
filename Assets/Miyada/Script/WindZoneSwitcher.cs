@@ -12,6 +12,16 @@ namespace Miyada
         [SerializeField]
         private MyWindZone targetWindZone;
 
+        [SerializeField]
+        private Vector3 coldBoxScale;
+        [SerializeField]
+        private Vector3 coldBoxLocalPos;
+
+        [SerializeField]
+        private Vector3 hotBoxScale;
+        [SerializeField]
+        private Vector3 hotBoxLocalPos;
+
         void OnTriggerEnter(Collider col)
         {
             var player = col.GetComponent<PlayerMove>();
@@ -28,14 +38,25 @@ namespace Miyada
             switch((int)player.Netudendou_Property)
             {
                 case HOT:
-                    targetWindZone.SetState(MyWindZone.WindState.Hot);
+                    targetWindZone.StopColdWind();
+                    StartCoroutine(WaitAndChangeState());
+                    targetWindZone.transform.localScale = hotBoxScale;
+                    targetWindZone.transform.localPosition = hotBoxLocalPos;
                     break;
 
                 case COLD:
                 default:
                     targetWindZone.SetState(MyWindZone.WindState.Cold);
+                    targetWindZone.transform.localScale = coldBoxScale;
+                    targetWindZone.transform.localPosition = coldBoxLocalPos;
                     break;
             }
+        }
+
+        IEnumerator WaitAndChangeState()
+        {
+            yield return new WaitForEndOfFrame();
+            targetWindZone.SetState(MyWindZone.WindState.Hot);
         }
     }   
 }
