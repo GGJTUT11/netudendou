@@ -8,7 +8,9 @@ public class StageCreator : MonoBehaviour {
 
     //配置するオブジェクト
     public GameObject[] block;
-    public GameObject player;
+	[SerializeField] private GameObject weathenium_0;
+	[SerializeField] private GameObject weathenium_100;
+	[SerializeField] private GameObject windZoneObj;
 
     public Vector3 createPos;
 
@@ -49,20 +51,16 @@ public class StageCreator : MonoBehaviour {
 				obj.name = block[random].name;
 				pos.x += spaceScale.x;
             }else if(c == '1'){
-                obj = Instantiate(player, pos, Quaternion.identity) as GameObject;
-                obj.name = player.name;
+				obj = Instantiate(weathenium_0, pos, Quaternion.identity) as GameObject;
 				pos.x += spaceScale.x;
 			}else if(c == '2'){
-				obj = Instantiate(player, pos, Quaternion.identity) as GameObject;
-				obj.name = player.name;
+				obj = Instantiate(weathenium_100, pos, Quaternion.identity) as GameObject;
 				pos.x += spaceScale.x;
 			}else if(c == '3'){
-				obj = Instantiate(player, pos, Quaternion.identity) as GameObject;
-				obj.name = player.name;
+				obj = Instantiate(windZoneObj, pos, Quaternion.identity) as GameObject;
 				pos.x += spaceScale.x;
 			}else if(c == '4'){
-				obj = Instantiate(player, pos, Quaternion.identity) as GameObject;
-				obj.name = player.name;
+				obj = Instantiate(windZoneObj, pos, Quaternion.identity) as GameObject;
 				pos.x += spaceScale.x;
 			}else if(c == '\n'){
                 pos.y -= spaceScale.y;
