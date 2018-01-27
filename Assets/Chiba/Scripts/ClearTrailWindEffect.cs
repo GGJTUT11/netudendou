@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestroyWindEffect : MonoBehaviour {
+public class ClearTrailWindEffect : MonoBehaviour {
 	public GameObject WindEffect;
 
 	void Start()
