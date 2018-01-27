@@ -107,6 +107,7 @@ public class PlayerMove : MonoBehaviour {
         }
         if (other.transform.tag == "ningen")
         {
+            Debug.Log("ningen");
             if (netudendou == 0) ningenMove.Instance.speed = ningen_idou_osoi;
             if (netudendou == 0.5) ningenMove.Instance.speed = ningen_idou_nomale;
             if (netudendou == 1) ningenMove.Instance.speed = ningen_idou_hayai;   
