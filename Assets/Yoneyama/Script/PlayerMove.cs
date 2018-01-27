@@ -24,10 +24,12 @@ public class PlayerMove : MonoBehaviour {
     [SerializeField] private float ningen_idou_nomale = 1;
     [SerializeField] private float ningen_idou_hayai = 2;
 
-
-    public void ningen_idouryou(float netudendou)
+    public float Netudendou_Property
     {
-       
+        get
+        {
+            return netudendou;
+        }
     }
 
     IEnumerator waitrespon()
@@ -107,6 +109,7 @@ public class PlayerMove : MonoBehaviour {
         }
         if (other.transform.tag == "ningen")
         {
+           
             if (netudendou == 0) ningenMove.Instance.speed = ningen_idou_osoi;
             if (netudendou == 0.5) ningenMove.Instance.speed = ningen_idou_nomale;
             if (netudendou == 1) ningenMove.Instance.speed = ningen_idou_hayai;   
@@ -147,9 +150,11 @@ public class PlayerMove : MonoBehaviour {
 
     void OnCollisionStay(Collision collision)
     {
+       
         //今は触れ続けるために移動し続けなければいけない→どうにかしたい
         if (collision.transform.tag == "Ice")
         {
+
             IceObj.Instance.Tokeru(netudendou);
         }
     }

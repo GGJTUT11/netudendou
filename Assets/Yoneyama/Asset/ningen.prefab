@@ -19,9 +19,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4362942519600860}
-  m_Layer: 8
+  - component: {fileID: 65933830859971616}
+  m_Layer: 0
   m_Name: player_netudendou
-  m_TagString: Untagged
+  m_TagString: ningen
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,6 +130,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
+--- !u!65 &65933830859971616
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1060267825180128}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.34625086, z: 1}
+  m_Center: {x: 0, y: -0.32687458, z: 0}
 --- !u!65 &65980910892153384
 BoxCollider:
   m_ObjectHideFlags: 1
