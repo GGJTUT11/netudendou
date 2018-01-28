@@ -12,6 +12,11 @@ namespace Miyada
         [SerializeField]
         private GameObject windzone;
 
+        void Start()
+        {
+            windzone.GetComponent<MyWindZone>().WindStateProp = MyWindZone.WindState.Hot;
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             var player = other.GetComponent<PlayerMove>();
@@ -28,6 +33,7 @@ namespace Miyada
 
             // 風消.
             windzone.SetActive(false);
+            water.StopEffect();
         }
 
         private void OnTriggerStay(Collider other)

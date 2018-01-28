@@ -22,6 +22,13 @@ namespace Miyada
         [SerializeField]
         private Vector3 hotBoxLocalPos;
 
+        void Start()
+        {
+            targetWindZone.SetState(MyWindZone.WindState.Cold);
+            targetWindZone.transform.localScale = coldBoxScale;
+            targetWindZone.transform.localPosition = coldBoxLocalPos;
+        }
+
         void OnTriggerEnter(Collider col)
         {
             var player = col.GetComponent<PlayerMove>();
