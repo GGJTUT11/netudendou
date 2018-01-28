@@ -1,21 +1,42 @@
 fileFormatVersion: 2
-guid: 622107dd3c4416a4d9fcc501f396d549
-timeCreated: 18446744011573954816
+guid: 2c2ce53cf17693f46aeed0fcdb5aa179
+timeCreated: 1517112697
+licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: torch
-    11100000: //RootNode
+    100000: Camera
+    100002: Camera.001
+    100004: Camera.002
+    100006: "ICO\u7403_crack_crack"
+    100008: Lamp
+    100010: Lamp.001
+    100012: Lamp.002
+    100014: //RootNode
+    400000: Camera
+    400002: Camera.001
+    400004: Camera.002
+    400006: "ICO\u7403_crack_crack"
+    400008: Lamp
+    400010: Lamp.001
+    400012: Lamp.002
+    400014: //RootNode
+    2000000: Camera
+    2000002: Camera.001
+    2000004: Camera.002
+    2100000: No Name
+    2300000: "ICO\u7403_crack_crack"
+    3300000: "ICO\u7403_crack_crack"
+    4300000: "ICO\u7403_crack_crack"
+    10800000: Lamp
+    10800002: Lamp.001
+    10800004: Lamp.002
   externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -43,10 +64,10 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
-    importVisibility: 0
+    importVisibility: 1
     importBlendShapes: 1
-    importCameras: 0
-    importLights: 0
+    importCameras: 1
+    importLights: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -54,17 +75,17 @@ ModelImporter:
     keepQuads: 0
     weldVertices: 1
     preserveHierarchy: 0
-    indexFormat: 1
+    indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
-    useFileScale: 0
+    useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
-    tangentImportMode: 4
-    normalCalculationMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
@@ -84,7 +105,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 1
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

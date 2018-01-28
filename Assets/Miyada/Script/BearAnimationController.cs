@@ -13,13 +13,13 @@ namespace Miyada
     /// SleepStart:睡眠開始
     /// SleepEnd:睡眠終了
     /// </summary>
-    public class BearAnimationController : MonoBehaviour {
+	public class BearAnimationController : MonoSingleton<BearAnimationController> {
 
         private Animation anim = null;
 
         private const string IdleName = "Arm_bear|idle_search";
         private const string WalkName = "Arm_bear|walk._1";
-        private const string AttackName = "Arm_bear|attack_2";
+        private const string AttackName = "Arm_bear|attack_4";
         private const string SleepStartName = "Arm_bear|sleep_start";
         private const string SleepEndName = "Arm_bear|sleep_end";
 
@@ -48,7 +48,7 @@ namespace Miyada
 
         public void PlaySleepStartAnimation()
         {
-            anim.CrossFade(AttackName);
+            anim.CrossFade(SleepStartName);
             Invoke("startSleepEffect", 1f);
         }
 

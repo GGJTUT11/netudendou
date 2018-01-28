@@ -20,6 +20,7 @@ public class GameEnd : MonoBehaviour
     GameObject cursor;
 	void Start ()
     {
+		clearorover = Bear.GetIsClear ();
         clearorover = DeathBlock.GetIsClear();
         clearorover = Rock.GetIsClear();
         clearorover = Goal.GetIsClear();

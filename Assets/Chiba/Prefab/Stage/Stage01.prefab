@@ -29602,7 +29602,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeSpeedTime: 1
+  horizonParticle: {fileID: 0}
   hotWindForce: {x: 0.5, y: 5, z: 0}
+  verticalParticle: {fileID: 0}
 --- !u!114 &114531407150496348
 MonoBehaviour:
   m_ObjectHideFlags: 1

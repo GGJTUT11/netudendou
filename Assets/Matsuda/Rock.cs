@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Rock : MonoBehaviour
 {
-    private float speed = -5.0f;
+    private float speed = 100f;
     private Vector3 moveDirection = Vector3.zero;
     public static bool isClear;
     Rigidbody rb;
@@ -17,12 +17,12 @@ public class Rock : MonoBehaviour
     {
         if (GameObject.Find("RockSwitch").GetComponent<RockSwitch>().GetTouchRockSwitch() == true)
         {
-            rb.position += new Vector3(1, 0, 0) * speed * Time.deltaTime;
+			rb.AddForce (Vector3.left * speed * Time.deltaTime);
         }
     }
     public void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag == "ningen")
+		if (other.gameObject.tag == "ningen")
         {
             isClear = false;
             SceneManager.LoadScene("EndScene");
