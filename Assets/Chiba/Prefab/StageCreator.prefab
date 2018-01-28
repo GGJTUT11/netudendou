@@ -51,11 +51,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 931315961fa465449a11f03421e84a9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textAsset: {fileID: 4900000, guid: 1f0ef5f8a14d57d488205a230904b40b, type: 3}
+  textAsset: {fileID: 4900000, guid: 03333e6ef5793fe43be30e62186c270d, type: 3}
   block:
   - {fileID: 1374853694990980, guid: 2ccc707233daeda40bb00721f7bf7f5b, type: 2}
   - {fileID: 1374853694990980, guid: 2ccc707233daeda40bb00721f7bf7f5b, type: 2}
   - {fileID: 1374853694990980, guid: 2ccc707233daeda40bb00721f7bf7f5b, type: 2}
-  player: {fileID: 0}
+  weathenium_0: {fileID: 1975670933397590, guid: 5198a85bc544778468904b2339a0df2e,
+    type: 2}
+  weathenium_100: {fileID: 1017533674071966, guid: 8c7053b0a84b99244badaa09f3df854c,
+    type: 2}
+  windZoneObj: {fileID: 1318088978045272, guid: 5fd2f0305852746ae8ad49a33a6d0f68,
+    type: 2}
   createPos: {x: 0, y: 0, z: 0}
   spaceScale: {x: 1.5, y: 1.5, z: 0}
