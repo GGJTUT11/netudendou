@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4465934, g: 0.49642956, b: 0.5748249, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -6027,11 +6027,10 @@ GameObject:
   - component: {fileID: 157481160}
   - component: {fileID: 157481164}
   - component: {fileID: 157481163}
-  - component: {fileID: 157481162}
   - component: {fileID: 157481161}
   m_Layer: 0
   m_Name: Player Camera
-  m_TagString: MainCamera
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6063,14 +6062,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1633481905}
---- !u!81 &157481162
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 81178217400642494, guid: e850ad62a82dbec42b1cf35ed31b0927,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 157481159}
-  m_Enabled: 1
 --- !u!124 &157481163
 Behaviour:
   m_ObjectHideFlags: 0
@@ -47620,6 +47611,16 @@ Prefab:
         type: 2}
       propertyPath: ShapeModule.radiusThickness
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198776271349770898, guid: e129d3d098da34f00b9c42fbd8ffc697,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198776271349770898, guid: e129d3d098da34f00b9c42fbd8ffc697,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
       objectReference: {fileID: 0}
     - target: {fileID: 198776271349770898, guid: e129d3d098da34f00b9c42fbd8ffc697,
         type: 2}
