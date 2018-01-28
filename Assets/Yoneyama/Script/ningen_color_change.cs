@@ -7,6 +7,11 @@ public class ningen_color_change : MonoBehaviour {
     private float netudendou = 0.5f;
     [SerializeField] private Renderer renderer;
 
+    private AudioSource audiosource;
+    private float SongTime;
+    private float song_count;
+    private bool songstart = false;
+
     private enum colorFlag
     {
         blue = 0,
@@ -19,6 +24,9 @@ public class ningen_color_change : MonoBehaviour {
     void Start () {
         //  renderer = this.gameObject.transform.Find("Cube").GetComponent<Renderer>();
         StartCoroutine(changeBodyColor());
+        audiosource = GetComponent<AudioSource>();
+        audiosource.clip = SoundManager.Instance.audioClip[5];
+        SongTime = audiosource.clip.length;
     }
 
     private void OnTriggerEnter(Collider other)

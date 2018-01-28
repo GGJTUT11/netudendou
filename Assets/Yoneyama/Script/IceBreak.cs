@@ -6,13 +6,18 @@ public class IceBreak : MonoBehaviour {
 
     [SerializeField] private GameObject player;
     private float netudendou = 0.5f;
-	
-	// Update is called once per frame
-	void Update () {
+    private bool oneshot = true;
+
+    IEnumerator waitshot()
+    {
+        yield return new WaitForSeconds(2.0f);
+        oneshot = true;
+    }
+
+    void Update () {
 
         netudendou = player.GetComponent<PlayerMove>().Netudendou_Property;
         icebreak();
-
 	}
 
 
@@ -29,9 +34,13 @@ public class IceBreak : MonoBehaviour {
         {
             if (hit.collider.tag == "Ice")
             {
-
-                Debug.Log(netudendou);
                 hit.collider.gameObject.GetComponent<IceObj>().Tokeru(netudendou);
+                if (oneshot)
+                {
+                    SoundManager.Instance.soundshot(1);
+                    oneshot = false;
+                    StartCoroutine(waitshot());
+                }
             }
 
         }
