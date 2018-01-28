@@ -33,6 +33,7 @@ namespace Miyada
 
             // 風消.
             windzone.SetActive(false);
+            water.StopEffect();
         }
 
         private void OnTriggerStay(Collider other)
