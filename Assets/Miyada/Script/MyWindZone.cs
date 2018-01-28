@@ -14,6 +14,11 @@ namespace Miyada
         public enum WindState { Cold, Neutral, Hot }
         private WindState windState = WindState.Cold;
 
+        public WindState WindStateProp
+        {
+            set { windState = value; }
+        }
+
         private ningenMove targetHuman;
 
         [Header(" ----- Cold ----- ")]
@@ -40,20 +45,23 @@ namespace Miyada
 
         private void Start()
         {
-            horizonParticle.Stop();
-            verticalParticle.Play();
-
-            horAnimators = horizonParticle.GetComponentsInChildren<Animator>();
-            verAnimators = verticalParticle.GetComponentsInChildren<Animator>();
-
-            foreach(var anim in horAnimators) 
+            if (horizonParticle)
             {
-                anim.speed = StopSpeed;
-            }
+                horizonParticle.Stop();
+                verticalParticle.Play();
 
-            foreach (var anim in verAnimators)
-            {
-                anim.speed = PlaySpeed;
+                horAnimators = horizonParticle.GetComponentsInChildren<Animator>();
+                verAnimators = verticalParticle.GetComponentsInChildren<Animator>();
+
+                foreach (var anim in horAnimators)
+                {
+                    anim.speed = StopSpeed;
+                }
+
+                foreach (var anim in verAnimators)
+                {
+                    anim.speed = PlaySpeed;
+                }   
             }
         }
 
@@ -104,17 +112,20 @@ namespace Miyada
             human.MakeStop(changeSpeedTime);
             targetHuman = human;
 
-            horizonParticle.Play();
-            verticalParticle.Stop();
-
-            foreach (var anim in horAnimators)
+            if(horizonParticle)
             {
-                anim.speed = PlaySpeed;
-            }
+                horizonParticle.Play();
+                verticalParticle.Stop();
 
-            foreach (var anim in verAnimators)
-            {
-                anim.speed = StopSpeed;
+                foreach (var anim in horAnimators)
+                {
+                    anim.speed = PlaySpeed;
+                }
+
+                foreach (var anim in verAnimators)
+                {
+                    anim.speed = StopSpeed;
+                }   
             }
         }
 
@@ -131,17 +142,19 @@ namespace Miyada
             if (!human) return;
             human.AddWind(hotWindForce);
 
-            horizonParticle.Stop();
-            verticalParticle.Play();
+            if(horizonParticle) {
+                horizonParticle.Stop();
+                verticalParticle.Play();
 
-            foreach (var anim in horAnimators)
-            {
-                anim.speed = StopSpeed;
-            }
+                foreach (var anim in horAnimators)
+                {
+                    anim.speed = StopSpeed;
+                }
 
-            foreach (var anim in verAnimators)
-            {
-                anim.speed = PlaySpeed;
+                foreach (var anim in verAnimators)
+                {
+                    anim.speed = PlaySpeed;
+                }   
             }
         }
         #endregion // Private Methods
