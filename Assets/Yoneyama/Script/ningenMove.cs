@@ -21,6 +21,9 @@ public class ningenMove : MonoSingleton<ningenMove>
 
     private Vector3 ningen = new Vector3(0, 0, 0);
 
+	[SerializeField] private GameObject ningenRootBody;
+	[SerializeField] bool isFastSpeed = false;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -46,8 +49,36 @@ public class ningenMove : MonoSingleton<ningenMove>
         timer = initTime = time;
     }
 
+	float changeTimer = 0;
+	void Update(){
+		if (!isFastSpeed) {
+			changeTimer += Time.deltaTime;
+			if (changeTimer > 2f) {
+				Anim_change.Instance.walk_change ();
+				isFastSpeed = true;
+				changeTimer = 0;
+			}
+		} else {
+			changeTimer = 0;
+		}
+	}
+
+	Vector3 beforeMove;
     void FixedUpdate()
     {
+		beforeMove = transform.localPosition;
+		var clipInfo = ningenRootBody.GetComponent<Animator> ().GetCurrentAnimatorClipInfo (0);
+		var clip = clipInfo [0];
+		switch (clip.clip.name)
+		{
+		case "WALK00_L":
+			isFastSpeed = true;
+			break;
+		case "WAIT01":
+			isFastSpeed = false;
+			break;
+		}
+
         if (timer > 0.0f)
         {
 
@@ -83,25 +114,22 @@ public class ningenMove : MonoSingleton<ningenMove>
         else
         {
             // 通常状態.
-            rb.velocity = new Vector3(speed_, rb.velocity.y, 0f);
+			if (isFastSpeed) {
+				rb.velocity = new Vector3 (speed_, rb.velocity.y, 0f);
+			} else {
+				rb.velocity = new Vector3 (0, rb.velocity.y, 0f);
+			}
         }
-
-        if (transform.position == offset_point)
-        {  
-            Anim_change.Instance.idol_change();
-        }
-        else
-        { 
-            Anim_change.Instance.walk_change();
-        }
-        offset_point = transform.position;
-
+		StartCoroutine (checkNingenDistance (beforeMove));
     }
 
-   // Ray ray = new Ray(new Vector3(transform.position.x, transform.position.y, transform.position.z), new Vector3(player_Obj.z, 0, 0));
-
-
-
-
-
+	IEnumerator checkNingenDistance(Vector3 pos){
+		yield return new WaitForSeconds (0.5f);
+		pos.y = transform.localPosition.y;
+		if (Mathf.Abs (Vector3.Distance (transform.localPosition, pos)) * 1000 < 1) {
+			Anim_change.Instance.idol_change ();
+		} else {
+			Anim_change.Instance.walk_change ();
+		}
+	}
 }

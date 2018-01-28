@@ -78,7 +78,7 @@ public class GameStart : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.Space))
             {
-                sceneName = "stage1";
+                sceneName = "stage2";
                 title.SetActive(false);
                 stageSelect.SetActive(false);
                 instruction.SetActive(true);

@@ -63,7 +63,7 @@ public class GameEnd : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.DownArrow))
             {
                 GetComponent<AudioSource>().Play();
-                cursor.GetComponent<RectTransform>().anchoredPosition = new Vector2(-125, -150);
+                cursor.GetComponent<RectTransform>().anchoredPosition = new Vector2(-125, -100);
                 gameState = GameState.End;
             }
         }
@@ -76,7 +76,7 @@ public class GameEnd : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.UpArrow))
             {
                 GetComponent<AudioSource>().Play();
-                cursor.GetComponent<RectTransform>().anchoredPosition = new Vector2(-125, -75);
+                cursor.GetComponent<RectTransform>().anchoredPosition = new Vector2(-125, -25);
                 gameState = GameState.Continue;
             }
         }
