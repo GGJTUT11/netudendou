@@ -27,7 +27,7 @@ public class IceObj : MonoBehaviour
             transform.position = new Vector3(transform.position.x, transform.position.y - tokeruritu, transform.position.z);
 
         }
-        if (HP < 0)
+        if (HP < Ice_tokeru / 2.5)
         {
             Destroy(gameObject);
         }

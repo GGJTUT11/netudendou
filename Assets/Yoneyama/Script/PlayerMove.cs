@@ -41,6 +41,11 @@ public class PlayerMove : MonoBehaviour {
 
     private Vector3 diff = new Vector3(0,0,1f);
 
+    private AudioSource audiosource;
+    private float SongTime;
+    private float song_count;
+    private bool songstart = false;
+
     public float Netudendou_Property
     {
         get
@@ -73,13 +78,16 @@ public class PlayerMove : MonoBehaviour {
     {
         //		renderer = this.gameObject.transform.Find ("Cube").GetComponent<Renderer>();
         rb = GetComponent<Rigidbody>();
+        audiosource = GetComponent<AudioSource>();
+        audiosource.clip = SoundManager.Instance.audioClip[5];
+        SongTime = audiosource.clip.length;
     }
 	
 	void Update ()
     {
         Objhakidasi();
         move_input();
-        mukihenkou();       
+        if (Mathf.Abs(move_x) < 0.1) audiosource.Stop();
     }
 
     private void FixedUpdate()
@@ -88,41 +96,50 @@ public class PlayerMove : MonoBehaviour {
     }
 
 
-    void mukihenkou()
-    {
-        if (rb.velocity.x > 0) diff.z = 1;
-        if (rb.velocity.x < 0) diff.z = -1;
-
-        transform.rotation = Quaternion.LookRotation(diff);
-
-    }
-
 
     void move_input()
     {
         if (!move_OK) return;
         else
         {
-            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+            if (Input.GetKey(KeyCode.A))
             {
                 move_x = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
                 Anim_change_Player.Instance.walk_change();
+                diff.z = -1;
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                move_x = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+                Anim_change_Player.Instance.walk_change();
+                diff.z = 1;
             }
 
             if (Input.GetKeyDown(KeyCode.W) && isground == true)
             {
                 move_y = jump;
                 isground = false;
+                move_sound();
             }
+            move_sound();
         }
 
         if (Mathf.Abs(move_x) < 0.1) Anim_change_Player.Instance.idol_change(); ;
-
+        transform.rotation = Quaternion.LookRotation(diff);
     }
 
-    /// <summary>
-    /// プレイヤーの移動,ジャンプ
-    /// </summary>
+    
+    void move_sound()
+    {
+        if (songstart) audiosource.Play();
+        if (song_count > SongTime)
+        {
+            audiosource.Play();
+            song_count = 0;
+        }
+        song_count += Time.deltaTime;
+    }
+
     void move()
     {
         rb.velocity = new Vector3(move_x * speed, rb.velocity.y , 0f) + windPower;
@@ -146,6 +163,7 @@ public class PlayerMove : MonoBehaviour {
         if (!respon_OK) return;
 
         Anim_change_Player.Instance.kyusyu_change();
+        SoundManager.Instance.soundshot(4);
 
         if (netudendou == 0.0f)
         {
@@ -202,6 +220,7 @@ public class PlayerMove : MonoBehaviour {
 
             if (Input.GetKeyDown(KeyCode.Space) && syozi == false)
             {
+                SoundManager.Instance.soundshot(4);
                 Anim_change_Player.Instance.kyusyu_change();
 
                 if (move_OK) move_OK = false;
