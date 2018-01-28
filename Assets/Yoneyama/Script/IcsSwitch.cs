@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IcsSwitch : MonoBehaviour {
+public class IcsSwitch : MonoSingleton<IcsSwitch>
+{
 
     [SerializeField] GameObject Ice_Ground;
 

@@ -17,12 +17,16 @@ public class ningenMove : MonoSingleton<ningenMove>
 
     private Vector3 offset_point = new Vector3 (0,0,0);
 
+    private bool kabeharituki = true;
+
+    private Vector3 ningen = new Vector3(0, 0, 0);
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         speed_ = speed;
         offset_point = transform.position;
+        ningen = transform.position;
     }
 
     public void AddWind(Vector3 wind)
@@ -82,19 +86,21 @@ public class ningenMove : MonoSingleton<ningenMove>
         }
 
         if (transform.position == offset_point)
-        {
+        {  
             Anim_change.Instance.idol_change();
         }
         else
-        {
+        { 
             Anim_change.Instance.walk_change();
         }
         offset_point = transform.position;
 
     }
 
+   // Ray ray = new Ray(new Vector3(transform.position.x, transform.position.y, transform.position.z), new Vector3(player_Obj.z, 0, 0));
 
 
-   
+
+
 
 }

@@ -195,6 +195,7 @@ public class PlayerMove : MonoBehaviour {
         if (other.transform.tag == "Switch_IceGround" && netudendou == 0)
         {
             other.gameObject.GetComponent<IcsSwitch>().Create_IceGround();
+            Aqa_or_freeze.Instance.freeze = true;
         }
         if (other.transform.tag == "Switch_IceGround" && netudendou == 1)
         {
@@ -242,9 +243,6 @@ public class PlayerMove : MonoBehaviour {
         {
             isground = true;
         }
-    
-
-
     }
 
 
