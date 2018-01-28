@@ -30,6 +30,7 @@ public class Bear : MonoBehaviour
     }
     public void OnTriggerEnter(Collider other)
     {
+        Debug.Log("A");
         if (other.transform.tag == "ningen" && collisionflag == true)
         {
             x = 0;
