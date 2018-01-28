@@ -47,20 +47,20 @@ namespace Miyada
         {
             if (horizonParticle)
             {
-                horizonParticle.Stop();
-                verticalParticle.Play();
+                horizonParticle.Play();
+                verticalParticle.Stop();
 
                 horAnimators = horizonParticle.GetComponentsInChildren<Animator>();
                 verAnimators = verticalParticle.GetComponentsInChildren<Animator>();
 
                 foreach (var anim in horAnimators)
                 {
-                    anim.speed = StopSpeed;
+                    anim.speed = PlaySpeed;
                 }
 
                 foreach (var anim in verAnimators)
                 {
-                    anim.speed = PlaySpeed;
+                    anim.speed = StopSpeed;
                 }   
             }
         }
@@ -138,6 +138,7 @@ namespace Miyada
 
         void blowHotWind(Collider col)
         {
+            Debug.Log("hot");
             var human = col.GetComponent<ningenMove>();
             if (!human) return;
             human.AddWind(hotWindForce);
