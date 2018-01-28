@@ -24,9 +24,6 @@ public class ningen_color_change : MonoBehaviour {
     void Start () {
         //  renderer = this.gameObject.transform.Find("Cube").GetComponent<Renderer>();
         StartCoroutine(changeBodyColor());
-        audiosource = GetComponent<AudioSource>();
-        audiosource.clip = SoundManager.Instance.audioClip[5];
-        SongTime = audiosource.clip.length;
     }
 
     private void OnTriggerEnter(Collider other)

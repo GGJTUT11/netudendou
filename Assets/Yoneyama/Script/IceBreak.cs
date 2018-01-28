@@ -8,6 +8,8 @@ public class IceBreak : MonoBehaviour {
     private float netudendou = 0.5f;
     private bool oneshot = true;
 
+    private Vector3 player_Obj;
+
     IEnumerator waitshot()
     {
         yield return new WaitForSeconds(2.0f);
@@ -17,14 +19,16 @@ public class IceBreak : MonoBehaviour {
     void Update () {
 
         netudendou = player.GetComponent<PlayerMove>().Netudendou_Property;
+        player_Obj = GameObject.Find("Player").GetComponent<PlayerMove>().diff;
         icebreak();
+
 	}
 
 
     void icebreak()
     {
 
-        Ray ray = new Ray(new Vector3(transform.position.x, transform.position.y, transform.position.z), new Vector3(1, 0, 0));
+        Ray ray = new Ray(new Vector3(transform.position.x, transform.position.y, transform.position.z), new Vector3(player_Obj.z, 0, 0));
 
         RaycastHit hit;
 

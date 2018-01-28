@@ -39,7 +39,7 @@ public class PlayerMove : MonoBehaviour {
 
     private Vector3 windPower;
 
-    private Vector3 diff = new Vector3(0,0,1f);
+    public Vector3 diff = new Vector3(0,0,1f);
 
     private AudioSource audiosource;
     private float SongTime;
