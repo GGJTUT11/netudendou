@@ -20,11 +20,43 @@ namespace Miyada
         [SerializeField]
         private float changeSpeedTime = 1.0f;
 
+        [SerializeField]
+        private ParticleSystem horizonParticle = null;
+
         [Header(" ----- Hot ----- ")]
         [SerializeField]
         private Vector3 hotWindForce = Constants.Vector3Zero;
 
+        [SerializeField]
+        private ParticleSystem verticalParticle = null;
+
+        private Animator[] horAnimators;
+        private Animator[] verAnimators;
+
+        private const float PlaySpeed = 1.0f;
+        private const float StopSpeed = 0.0f;
+
         #region UnityCallback
+
+        private void Start()
+        {
+            horizonParticle.Stop();
+            verticalParticle.Play();
+
+            horAnimators = horizonParticle.GetComponentsInChildren<Animator>();
+            verAnimators = verticalParticle.GetComponentsInChildren<Animator>();
+
+            foreach(var anim in horAnimators) 
+            {
+                anim.speed = StopSpeed;
+            }
+
+            foreach (var anim in verAnimators)
+            {
+                anim.speed = PlaySpeed;
+            }
+        }
+
         private void OnTriggerEnter(Collider col)
         {
             const string HumanLayerName = "ningen";
@@ -72,7 +104,18 @@ namespace Miyada
             human.MakeStop(changeSpeedTime);
             targetHuman = human;
 
-            // TODO:あとでエフェクト切り替え追加.
+            horizonParticle.Play();
+            verticalParticle.Stop();
+
+            foreach (var anim in horAnimators)
+            {
+                anim.speed = PlaySpeed;
+            }
+
+            foreach (var anim in verAnimators)
+            {
+                anim.speed = StopSpeed;
+            }
         }
 
         public void StopColdWind()
@@ -80,8 +123,6 @@ namespace Miyada
             if (!targetHuman) return;
             targetHuman.MakeMove(changeSpeedTime);
             targetHuman = null;
-
-            // TODO:エフェクトの停止.
         }
 
         void blowHotWind(Collider col)
@@ -90,7 +131,18 @@ namespace Miyada
             if (!human) return;
             human.AddWind(hotWindForce);
 
-            // TODO:あとでエフェクト切り替え追加.
+            horizonParticle.Stop();
+            verticalParticle.Play();
+
+            foreach (var anim in horAnimators)
+            {
+                anim.speed = StopSpeed;
+            }
+
+            foreach (var anim in verAnimators)
+            {
+                anim.speed = PlaySpeed;
+            }
         }
         #endregion // Private Methods
     }
