@@ -50,6 +50,8 @@ public class ningenMove : MonoSingleton<ningenMove>
     {
         if (timer > 0.0f)
         {
+
+            Debug.Log("wind");
             // 0.0 ~ 1.0
             var curRate = 1.0f - (initTime - timer) / initTime;
 
@@ -75,12 +77,14 @@ public class ningenMove : MonoSingleton<ningenMove>
         }
         else if(windPower != Miyada.Constants.Vector3Zero)
         {
+            Debug.Log("up wind");
             // 上昇気流を受けている場合.
             rb.velocity = new Vector3(speed_, 0f, 0f) + windPower;
             windPower = Miyada.Constants.Vector3Zero;
         }
         else
         {
+            Debug.Log("walk");
             // 通常状態.
             rb.velocity = new Vector3(speed_, rb.velocity.y, 0f);
         }
